@@ -179,7 +179,7 @@ def init_widgets_list():
               widget.Image(
                        filename = "~/.config/qtile/icons/arco.png",
                        scale = "True",
-                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)}
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("rofi -show drun -font 'FiraCode Nerd Font 12'")}
                        ),
               widget.TextBox(
                        text = '◣',
