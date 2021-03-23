@@ -8,7 +8,8 @@ Dotfiles are configurations files in a computer on Linux or Unix-Based systems. 
 
 ### Needed Fonts and Basic Pkgs
 
-- Fira Code and Fira Code Nerd Font : https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode
+- Fira Code : https://github.com/tonsky/FiraCode
+- JetBrainsMono Nerd Font : https://github.com/ryanoasis/nerd-fonts
 - Rofi : https://github.com/davatorium/rofi
 - JoyPixels(or any other emoji font) : https://www.joypixels.com/
 

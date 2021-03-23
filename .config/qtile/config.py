@@ -6,8 +6,8 @@
 #    \ \_____  \   \ \__\ \ \__\ \_______\ \_______\
 #     \|___| \__\   \|__|  \|__|\|_______|\|_______|
 #           \|__|                                   
-#                                                  
-#                                                  
+
+
 # -*- coding: utf-8 -*-
 import os
 import re
@@ -29,7 +29,7 @@ keys = [
              desc='Launches My Terminal'
              ),
          Key([mod], "r",
-             lazy.spawn("rofi -show drun -font 'FiraCode Nerd Font 12'"),
+             lazy.spawn("rofi -show drun -font 'JetBrainsMono Nerd Font 12'"),
              desc='Run Launcher'
              ),
          Key([mod], "Tab",
@@ -56,7 +56,7 @@ keys = [
             lazy.spawn("betterlockscreen -s blur --text 'This Computer is Locked UwU'"),
             desc='Suspend and Lock'
             ),
-         Key(["control", "shift"], "s",
+         Key(["mod1", "shift"], "s",
              lazy.spawn("flameshot gui"),
              desc='Screenshot'
              ),
@@ -133,8 +133,8 @@ layouts = [
     #layout.Stack(stacks=2, **layout_theme),
     #layout.Columns(**layout_theme),
     #layout.RatioTile(**layout_theme),
-    #layout.VerticalTile(**layout_theme),
-    #layout.Matrix(**layout_theme),
+    layout.VerticalTile(**layout_theme),
+    layout.Matrix(**layout_theme),
     #layout.Zoomy(**layout_theme),
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
@@ -144,7 +144,7 @@ layouts = [
 
 colors = [["#434C5E", "#434C5E"], # panel background
           ["#3B4252", "#3B4252"], # background for current screen tab
-          ["#ffffff", "#ffffff"], # font color for group names
+          ["#ECEFF4", "#ECEFF4"], # font color for group names
           ["#ff5555", "#ff5555"], # border line color for current tab
           ["#D08770", "#D08770"], # border line color for 'other tabs' and color for 'even widgets'
           ["#5E81AC", "#5E81AC"], # color for the 'odd widgets'
@@ -154,7 +154,7 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 ##### DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
-    font="Fira Code",
+    font="JetBrains Mono Nerd Font Mono",
     fontsize = 12,
     padding = 2,
     background=colors[2]
@@ -174,18 +174,20 @@ def init_widgets_list():
                        background = colors[0],
                        foreground = "#81A1C1",
                        padding = -2,
+                       font= "Fira Code",
                        fontsize = 50
                        ),
               widget.Image(
                        filename = "~/.config/qtile/icons/arco.png",
                        scale = "True",
-                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("rofi -show drun -font 'FiraCode Nerd Font 12'")}
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("rofi -show drun -font 'JetBrainsMono Nerd Font 12'")}
                        ),
               widget.TextBox(
                        text = '◣',
                        background = colors[0],
                        foreground = "#81A1C1",
                        padding = -2,
+                       font = "Fira Code",
                        fontsize = 50
                        ),
 
@@ -196,7 +198,7 @@ def init_widgets_list():
                        background = colors[0]
                        ),
               widget.GroupBox(
-                       font = "FiraCode Nerd Font",
+                       font = "JetBrainsMono Nerd Font",
                        fontsize = 12,
                        margin_y = 3,
                        margin_x = 0,
@@ -217,7 +219,7 @@ def init_widgets_list():
                        ),
               widget.Prompt(
                        prompt = prompt,
-                       font = "FiraCode Nerd Font",
+                       font = "JetBrainsMono Nerd Font",
                        padding = 10,
                        foreground = colors[3],
                        background = colors[1]
@@ -229,9 +231,10 @@ def init_widgets_list():
                        background = colors[0]
                        ),
               widget.WindowName(
-                       foreground = colors[6],
+                       foreground = colors[2],
                        background = colors[0],
-                       padding = 0
+                       padding = 0,
+                       font = "JetBrainsMono Nerd Font"
                        ),
               widget.Sep(
                        linewidth = 0,
@@ -244,6 +247,7 @@ def init_widgets_list():
                        background = colors[0],
                        foreground = colors[5],
                        padding = -2,
+                       font = "Fira Code",
                        fontsize = 50
                        ),
              widget.Net(
@@ -259,6 +263,7 @@ def init_widgets_list():
                        background = colors[5],
                        foreground = colors[4],
                        padding = -2,
+                       font = "Fira Code",
                        fontsize = 50
                        ),
               widget.TextBox(
@@ -281,6 +286,7 @@ def init_widgets_list():
                        background = colors[4],
                        foreground = colors[5],
                        padding = -2,
+                       font = "Fira Code",
                        fontsize = 50
                        ),
               widget.TextBox(
@@ -293,7 +299,7 @@ def init_widgets_list():
               widget.Memory(
                        foreground = colors[2],
                        background = colors[5],
-                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e bashtop')},
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e gotop')},
                        padding = 5
                        ),
               widget.TextBox(
@@ -301,6 +307,7 @@ def init_widgets_list():
                        background = colors[5],
                        foreground = colors[4],
                        padding = -2,
+                       font = "Fira Code",
                        fontsize = 50
                        ),
               widget.TextBox(
@@ -319,6 +326,7 @@ def init_widgets_list():
                        background = colors[4],
                        foreground = colors[5],
                        padding = -2,
+                       font = "Fira Code",
                        fontsize = 50
                        ),
               widget.CurrentLayoutIcon(
@@ -338,6 +346,7 @@ def init_widgets_list():
                        background = colors[5],
                        foreground = colors[4],
                        padding = -2,
+                       font = "Fira Code",
                        fontsize = 50
                        ),
               widget.Clock(
@@ -351,6 +360,7 @@ def init_widgets_list():
                       background = colors[0],
                       foreground = colors[4],
                       padding = -2,
+                      font = "Fira Code",
                       fontsize = 50
                       ),
               widget.Systray(
