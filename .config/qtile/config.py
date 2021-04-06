@@ -105,15 +105,15 @@ keys = [
              ),
 ]
 
-group_names = [("I", {'layout': 'monadtall'}),
-               ("II", {'layout': 'monadtall'}),
-               ("III", {'layout': 'monadtall'}),
-               ("IV", {'layout': 'monadtall'}),
-               ("V", {'layout': 'monadtall'}),
-               ("VI", {'layout': 'monadtall'}),
-               ("VII", {'layout': 'monadtall'}),
-               ("VIII", {'layout': 'monadtall'}),
-               ("IX", {'layout': 'monadtall'})]
+group_names = [(" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'})]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -148,7 +148,8 @@ colors = [["#434C5E", "#434C5E"], # panel background
           ["#ff5555", "#ff5555"], # border line color for current tab
           ["#D08770", "#D08770"], # border line color for 'other tabs' and color for 'even widgets'
           ["#5E81AC", "#5E81AC"], # color for the 'odd widgets'
-          ["#A3BE8C", "#A3BE8C"]] # window name
+          ["#A3BE8C", "#A3BE8C"], # window name
+          ["#81A1C1", "#81A1C1"]] # group name and logo
 
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
@@ -172,7 +173,7 @@ def init_widgets_list():
               widget.TextBox(
                        text = '◥',
                        background = colors[0],
-                       foreground = "#81A1C1",
+                       foreground = colors[7],
                        padding = -2,
                        font= "Fira Code",
                        fontsize = 50
@@ -185,7 +186,7 @@ def init_widgets_list():
               widget.TextBox(
                        text = '◣',
                        background = colors[0],
-                       foreground = "#81A1C1",
+                       foreground = colors[7],
                        padding = -2,
                        font = "Fira Code",
                        fontsize = 50
@@ -199,20 +200,20 @@ def init_widgets_list():
                        ),
               widget.GroupBox(
                        font = "JetBrainsMono Nerd Font",
-                       fontsize = 12,
+                       fontsize = 14,
                        margin_y = 3,
                        margin_x = 0,
                        padding_y = 5,
                        padding_x = 3,
                        borderwidth = 3,
                        active = colors[2],
-                       inactive = colors[2],
+                       inactive = colors[1],
                        rounded = False,
                        highlight_color = colors[1],
-                       highlight_method = "line",
-                       this_current_screen_border = colors[6],
+                       highlight_method = "block",
+                       this_current_screen_border = colors[7],
                        this_screen_border = colors [4],
-                       other_current_screen_border = colors[6],
+                       other_current_screen_border = colors[5],
                        other_screen_border = colors[4],
                        foreground = colors[2],
                        background = colors[0]
@@ -299,7 +300,7 @@ def init_widgets_list():
               widget.Memory(
                        foreground = colors[2],
                        background = colors[5],
-                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e gotop')},
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e bpytop')},
                        padding = 5
                        ),
               widget.TextBox(
@@ -412,7 +413,7 @@ def switch_screens(qtile):
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
+    Drag([mod, "shift"], "Button1", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
