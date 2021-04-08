@@ -106,11 +106,11 @@ keys = [
 ]
 
 group_names = [(" ", {'layout': 'monadtall'}),
-               (" ", {'layout': 'monadtall'}),
-               (" ", {'layout': 'monadtall'}),
-               (" ", {'layout': 'monadtall'}),
-               (" ", {'layout': 'monadtall'}),
                (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
+               (" ", {'layout': 'monadtall'}),
                (" ", {'layout': 'monadtall'}),
                (" ", {'layout': 'monadtall'}),
                (" ", {'layout': 'monadtall'})]
@@ -149,7 +149,8 @@ colors = [["#434C5E", "#434C5E"], # panel background
           ["#D08770", "#D08770"], # border line color for 'other tabs' and color for 'even widgets'
           ["#5E81AC", "#5E81AC"], # color for the 'odd widgets'
           ["#A3BE8C", "#A3BE8C"], # window name
-          ["#81A1C1", "#81A1C1"]] # group name and logo
+          ["#81A1C1", "#81A1C1"], # logo
+          ["#BF616A", "#BF616A"]] # urgent
 
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
@@ -202,18 +203,19 @@ def init_widgets_list():
                        font = "JetBrainsMono Nerd Font",
                        fontsize = 14,
                        margin_y = 3,
-                       margin_x = 0,
+                       margin_x = 1,
                        padding_y = 5,
                        padding_x = 3,
                        borderwidth = 3,
-                       active = colors[2],
-                       inactive = colors[1],
+                       active = colors[6],
+                       inactive = colors[2],
                        rounded = False,
                        highlight_color = colors[1],
                        highlight_method = "block",
-                       this_current_screen_border = colors[7],
+                       urgent_border = colors[8],
+                       this_current_screen_border = colors[1],
                        this_screen_border = colors [4],
-                       other_current_screen_border = colors[5],
+                       other_current_screen_border = colors[1],
                        other_screen_border = colors[4],
                        foreground = colors[2],
                        background = colors[0]
@@ -434,7 +436,8 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='gnome-calculator'),  # Calculator
     Match(wm_class='olive-editor'),  # olive
     Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
-])
+],
+**layout_theme)
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
